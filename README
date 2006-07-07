@@ -1,51 +1,31 @@
+TL
 
-Text::Levenshtein is an implementation of the Levenshtein edit distance in Perl.
-A good point to start is: <http://www.merriampark.com/ld.htm>
+The README is used to introduce the module and provide instructions on
+how to install the module, any machine dependencies it may have (for
+example C compilers and installed libraries) and any other information
+that should be provided before the module is installed.
 
-See also Text::WagnerFischer on CPAN for a configurable edit distance. 
-
-
-PREREQUISITES
-
-This suite requires Perl 5; I tested it only under Perl 5.6.
-
-Text::Levenshtein does not use any nonstandard modules.
-
+A README file is required for CPAN modules since CPAN extracts the README
+file from a module distribution so that people browsing the archive
+can use it get an idea of the modules uses. It is usually a good idea
+to provide version information here so that people can decide whether
+fixes for the module are worth downloading.
 
 INSTALLATION
 
-You install Text::Levenshtein by running these commands in the *nix environment:
+To install this module, run the following commands:
 
-   perl Makefile.PL
-   make
-   make test (optional)
-   make install
-
-To install Text::Levenshtein in the Win32 environment, use nmake instead of make.
-nmake is available for free (in a self extracting executable):
-<http://download.microsoft.com/download/vc15/Patch/1.52/W95/EN-US/Nmake15.exe>
-After download and inflate, put nmake.exe and nmake.err in c:\windows\command .
+    perl Makefile.PL
+    make
+    make test
+    make install
 
 
-DOCUMENTATION
+COPYRIGHT AND LICENCE
 
-POD format documentation is included in Levenshtein.pm.  
-POD is readable with the command:
+Put the correct copyright and licence information here.
 
-  perldoc Text::Levenshtein
+Copyright (C) 2006 YMIRLINK Inc. All Rights Reserved.
 
-
-AVAILABILITY
-
-The latest version of Text::Levenshtein is available from the
-CPAN <http://search.cpan.org/> 
-
-
-COPYRIGHT
-
-Copyright 2002 Dree Mistrut <dree@friul.it>
-
-This package is free software and is provided "as is" without express
-or implied warranty.  You can redistribute it and/or modify it under 
-the same terms as Perl itself.
-
+This framework is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself

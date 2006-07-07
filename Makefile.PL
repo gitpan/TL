@@ -1,9 +1,29 @@
+use strict;
+use warnings;
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
+
 WriteMakefile(
-	      NAME	=> 'Text::Levenshtein',
-	      VERSION	=> '0.04',
-	      LINKTYPE	=> '$(INST_PM)',
-	      PREREQ_PM => {'Test::More' => 0}
-	     );
+    NAME                => 'TL',
+    AUTHOR              => 'Ymirlink <null@ymir.jp>',
+    VERSION_FROM        => 'lib/TL.pm',
+    ABSTRACT_FROM       => 'lib/TL.pm',
+    PL_FILES            => {},
+    PREREQ_PM => {
+        'Test::More'      => 0,
+	'Crypt::CBC'        => 0,
+	'Crypt::Rijndael'   => 0,
+	'Data::Dumper'      => 0,
+	'DBI'               => 0,
+	'Digest::MD5'       => 0,
+	'Digest::SHA1'      => 0,
+	'Digest::HMAC_SHA1' => 0,
+	'File::Path'        => 0,
+	'IO::Scalar'        => 0,
+	'MIME::Tools'       => 5.411,
+	'PadWalker'         => 1.0,
+	'Text::CSV_XS'      => 0, # optional
+	'Test::Exception'   => 0, # test
+	'Unicode::Japanese' => 0,
+    },
+    dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+);
