@@ -1,5 +1,7 @@
 Revision history for TL
 
+0.10_02 Fri Jul 07 21:18 JST 2006
+	- encoding指定ミスを修正
 0.10_01 Fri Jul 07 16:34 JST 2006
 	- CPAN公開初版
 0.09 Tue Jun 13 18:09 JST 2006

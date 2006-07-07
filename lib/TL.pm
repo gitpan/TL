@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use UNIVERSAL qw(isa);
 
-our $VERSION = '0.10_01';
+our $VERSION = '0.10_02';
 
 our $TL = TL->__new;
 our @specialization = ();
@@ -1721,7 +1721,7 @@ sub __flushContentFilter {
 
 __END__
 
-=encoding euc-jp
+=encoding utf-8
 
 =head1 NAME
 

@@ -210,7 +210,7 @@ sub __getEncodeAliases {
 
 __END__
 
-=encoding euc-jp
+=encoding utf-8
 
 =head1 NAME
 

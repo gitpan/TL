@@ -79,7 +79,7 @@ sub _raw2utf8 {
 
 __END__
 
-=encoding euc-jp
+=encoding utf-8
 
 =head1 NAME
 

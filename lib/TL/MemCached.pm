@@ -130,7 +130,7 @@ sub flush_all {
 
 __END__
 
-=encoding euc-jp
+=encoding utf-8
 
 =head1 NAME
 

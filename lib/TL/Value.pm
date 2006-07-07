@@ -920,7 +920,7 @@ __END__
 
 =head1 NAME
 
-=encoding euc-jp
+=encoding utf-8
 
 =head1 NAME
 
