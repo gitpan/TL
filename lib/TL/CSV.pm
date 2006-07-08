@@ -106,11 +106,7 @@ __END__
 
 =head1 NAME
 
-TL::CSV - parse and generation of CSV (ja)
-
-=head1 NAME (ja)
-
-TL::CSV::JA - CSV のパースと生成
+TL::CSV - CSV のパースと生成
 
 =head1 SYNOPSIS
 

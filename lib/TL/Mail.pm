@@ -582,11 +582,7 @@ __END__
 
 =head1 NAME
 
-TL::Mail - Mail making/reading (ja)
-
-=head1 NAME (ja)
-
-TL::Mail::JA - メール作成/読み込み
+TL::Mail - メール作成/読み込み
 
 =head1 SYNOPSIS
 

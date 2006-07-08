@@ -92,11 +92,7 @@ __END__
 
 =head1 NAME
 
-TL::Cookie - An original cookie is managed (ja)
-
-=head1 NAME (ja)
-
-TL::Cookie::JA - 独自のクッキー管理を行う
+TL::Cookie - 独自のクッキー管理を行う
 
 =head1 SYNOPSIS
 

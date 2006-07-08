@@ -63,11 +63,7 @@ __END__
 
 =head1 NAME
 
-TL::Filter::MobileHTML - output filter for MobileHTML of Japan (ja)
-
-=head1 NAME (ja)
-
-TL::Filter::MobileHTML::JA - 携帯電話向けHTML出力用フィルタ
+TL::Filter::MobileHTML - 携帯電話向けHTML出力用フィルタ
 
 =head1 SYNOPSIS
 

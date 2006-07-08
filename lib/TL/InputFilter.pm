@@ -121,11 +121,7 @@ __END__
 
 =head1 NAME
 
-TL::InputFilter - CGI parameter is read (ja)
-
-=head1 NAME (ja)
-
-TL::InputFilter::JA - CGIクエリパラメータを読み取る
+TL::InputFilter - CGIクエリパラメータを読み取る
 
 =head1 SYNOPSIS
 

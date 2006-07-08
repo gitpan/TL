@@ -269,11 +269,7 @@ __END__
 
 =head1 NAME
 
-TL::Template - Template class (ja)
-
-=head1 NAME (ja)
-
-TL::Template::JA - テンプレート
+TL::Template - テンプレート
 
 =head1 SYNOPSIS
 

@@ -21,7 +21,7 @@ END {
 
 my $TMPL3_XML = qq{
 <?xml version="1.0" encoding="UTF-8" ?>
-      <FORM ACTION=">
+      <FORM ACTION="">
         <INPUT TYPE="text" NAME="aaa" VALUE="111" />
         <INPUT TYPE="password" NAME="bbb" VALUE="111" />
   <input type="checkbox" name="checkbox" value="checkbox" checked="checked" />
@@ -46,7 +46,7 @@ my $TMPL3_XML = qq{
 };
 
 my $TMPL3 = qq{
-      <FORM ACTION=">
+      <FORM ACTION="">
         <INPUT TYPE="text" NAME="aaa" VALUE="111">
         <INPUT TYPE="password" NAME="bbb" VALUE="111">
   <input type="checkbox" name="checkbox" value="checkbox">

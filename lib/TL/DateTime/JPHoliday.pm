@@ -377,11 +377,7 @@ __END__
 
 =head1 NAME
 
-TL::DateTime::JPHoliday - Holiday of Japan (ja)
-
-=head1 NAME (ja)
-
-TL::DateTime::JPHoliday::JA - 日本の祝日
+TL::DateTime::JPHoliday - 日本の祝日
 
 =head1 DESCRIPTION
 

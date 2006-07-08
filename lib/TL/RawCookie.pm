@@ -228,11 +228,7 @@ __END__
 
 =head1 NAME
 
-TL::RawCookie - A general cookie is managed.  (ja)
-
-=head1 NAME (ja)
-
-TL::RawCookie::JA - 汎用的なクッキー管理を行う
+TL::RawCookie - 汎用的なクッキー管理を行う
 
 =head1 SYNOPSIS
 

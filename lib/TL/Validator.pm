@@ -100,11 +100,7 @@ __END__
 
 =head1 NAME
 
-TL::Validator - Batch processing of verification of value (ja)
-
-=head1 NAME (ja)
-
-TL::Validator::JA - 値の検証の一括処理
+TL::Validator - 値の検証の一括処理
 
 =head1 SYNOPSIS
 

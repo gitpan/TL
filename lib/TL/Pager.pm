@@ -374,11 +374,7 @@ __END__
 
 =head1 NAME
 
-TL::Pager - Paging class (ja)
-
-=head1 NAME (ja)
-
-TL::Pager::JA - ページング処理
+TL::Pager - ページング処理
 
 =head1 SYNOPSIS
 

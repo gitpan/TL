@@ -94,11 +94,7 @@ __END__
 
 =head1 NAME
 
-TL::FileSentinel - Watch of update of file (ja)
-
-=head1 NAME (ja)
-
-TL::FileSentinel::JA - ファイルの更新の監視
+TL::FileSentinel - ファイルの更新の監視
 
 =head1 SYNOPSIS
 

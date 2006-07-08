@@ -1608,11 +1608,7 @@ __END__
 
 =head1 NAME
 
-TL::Debug - Class for TL debug (ja)
-
-=head1 NAME (ja)
-
-TL::Debug::JA - TL デバッグ用クラス
+TL::Debug - TL デバッグ用クラス
 
 =head1 DESCRIPTION
 

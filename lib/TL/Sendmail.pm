@@ -113,11 +113,7 @@ __END__
 
 =head1 NAME
 
-TL::Sendmail - Mail is transmitted.  (ja)
-
-=head1 NAME (ja)
-
-TL::Sendmail::JA - メールの送信を行う
+TL::Sendmail - メールの送信を行う
 
 =head1 SYNOPSIS
 

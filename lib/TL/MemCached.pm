@@ -134,11 +134,7 @@ __END__
 
 =head1 NAME
 
-TL::MemCached - The MemCached is used (ja)
-
-=head1 NAME (ja)
-
-TL::MemCached::JA - キャッシュを扱う
+TL::MemCached - キャッシュを扱う
 
 =head1 SYNOPSIS
 

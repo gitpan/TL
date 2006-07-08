@@ -83,11 +83,7 @@ __END__
 
 =head1 NAME
 
-TL::MemCached - input filter for MobileHTML of Japan (ja)
-
-=head1 NAME (ja)
-
-TL::InputFilter::MobileHTML::JA - 携帯電話向けHTML用CGIクエリ読み取り
+TL::InputFilter::MobileHTML - 携帯電話向けHTML用CGIクエリ読み取り
 
 =head1 SYNOPSIS
 

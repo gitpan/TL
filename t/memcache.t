@@ -10,8 +10,8 @@ BEGIN {
 END {
 }
 
-if(!$ENV{MEMCACHE_CHECK}){
-   plan skip_all => "Cache::Memcached check skip. Please set MEMCACHE_CHECK = 1 when checking.";
+if(!$ENV{TL_MEMCACHE_CHECK}){
+   plan skip_all => "Cache::Memcached check skip. Please set TL_MEMCACHE_CHECK = 1 when checking.";
 }
 
 eval "use Cache::Memcached";

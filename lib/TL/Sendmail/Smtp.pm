@@ -347,11 +347,7 @@ __END__
 
 =head1 NAME
 
-TL::Sendmail::Smtp - Mail Sending that uses SMTP (ja)
-
-=head1 NAME (ja)
-
-TL::Sendmail::Smtp::JA - SMTPメール送信
+TL::Sendmail::Smtp - SMTPメール送信
 
 =head1 DESCRIPTION
 

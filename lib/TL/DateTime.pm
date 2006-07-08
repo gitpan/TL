@@ -1582,11 +1582,7 @@ __END__
 
 =head1 NAME
 
-TL::DateTime - Date and time (ja)
-
-=head1 NAME (ja)
-
-TL::DateTime::JA - 日付と時刻
+TL::DateTime - 日付と時刻
 
 =head1 SYNOPSIS
 

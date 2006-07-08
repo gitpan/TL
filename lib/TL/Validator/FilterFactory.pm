@@ -56,11 +56,7 @@ __END__
 
 =head1 NAME
 
-TL::Validator::FilterFactory - TL::Validator internal class (ja)
-
-=head1 NAME (ja)
-
-TL::Validator::FilterFactory::JA - TL::Validator 内部クラス
+TL::Validator::FilterFactory - TL::Validator 内部クラス
 
 =head1 DESCRIPTION
 

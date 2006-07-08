@@ -118,11 +118,7 @@ __END__
 
 =head1 NAME
 
-TL::Filter::CSV - output filter for CSV (ja)
-
-=head1 NAME (ja)
-
-TL::Filter::CSV::JA - CSV出力フィルタ
+TL::Filter::CSV - CSV出力フィルタ
 
 =head1 SYNOPSIS
 

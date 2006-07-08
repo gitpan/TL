@@ -446,11 +446,7 @@ __END__
 
 =head1 NAME
 
-TL::InputFilter::HTML - input filter for HTML (ja)
-
-=head1 NAME (ja)
-
-TL::InputFilter::HTML::JA - 通常HTML向けCGIクエリ読み取り
+TL::InputFilter::HTML - 通常HTML向けCGIクエリ読み取り
 
 =head1 SYNOPSIS
 

@@ -319,11 +319,7 @@ __END__
 
 =head1 NAME
 
-TL::Sendmail::MailQueue - Mail Sending that uses tripletail original (ja)
-
-=head1 NAME (ja)
-
-TL::Sendmail::MailQueue::JA - 独自のメールキューを使用するメール送信
+TL::Sendmail::MailQueue - 独自のメールキューを使用するメール送信
 
 =head1 SYNOPSIS
 

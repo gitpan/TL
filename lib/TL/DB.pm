@@ -9,6 +9,7 @@ require Time::HiRes;
 
 sub _PRE_REQUEST_HOOK_PRIORITY() { -1_000_000 } # 順序は問わない
 sub _POST_REQUEST_HOOK_PRIORITY() { -1_000_000 } # セッションフックの後
+sub _TERM_HOOK_PRIORITY() { -1_000_000 } # セッションフックの後
 
 our $INSTANCES = {}; # グループ名 => インスタンス
 
@@ -562,7 +563,7 @@ sub _connect {
 		$INSTANCES->{$group} = $class->_new($group)->connect;
 	}
 
-	# preRequest, postRequestをフックする
+	# preRequest, postRequest, term をフックする
 	$TL->setHook(
 		'preRequest',
 		_PRE_REQUEST_HOOK_PRIORITY,
@@ -573,6 +574,12 @@ sub _connect {
 		'postRequest',
 		_POST_REQUEST_HOOK_PRIORITY,
 		\&__postRequest,
+	);
+
+	$TL->setHook(
+		'term',
+		_TERM_HOOK_PRIORITY,
+		\&__term,
 	);
 
 	undef;
@@ -662,6 +669,14 @@ sub __preRequest {
 	foreach my $db (values %$INSTANCES) {
 		$db->connect;
 	}
+}
+
+sub __term {
+	# $INSTANCESの接続を切断する。
+	foreach my $db (values %$INSTANCES) {
+		$db->disconnect;
+	}
+	undef $INSTANCES;
 }
 
 sub __postRequest {
@@ -985,11 +1000,7 @@ __END__
 
 =head1 NAME
 
-TL::DB - DBI (ja)
-
-=head1 NAME (ja)
-
-TL::DB::JA - DBIのラッパ
+TL::DB - DBIのラッパ
 
 =head1 SYNOPSIS
 

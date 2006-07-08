@@ -556,11 +556,7 @@ __END__
 
 =head1 NAME
 
-TL::Session - Session class (ja)
-
-=head1 NAME (ja)
-
-TL::Session::JA - セッション
+TL::Session - セッション
 
 =head1 SYNOPSIS
 

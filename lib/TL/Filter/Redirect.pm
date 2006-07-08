@@ -141,11 +141,7 @@ __END__
 
 =head1 NAME
 
-TL::Filter::Redirect - output filter for Redirect (ja)
-
-=head1 NAME (ja)
-
-TL::Filter::Redirect::JA - リダイレクトヘッダ出力
+TL::Filter::Redirect - リダイレクトヘッダ出力
 
 =head1 SYNOPSIS
 

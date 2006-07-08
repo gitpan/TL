@@ -918,17 +918,11 @@ sub _ip_match {
 
 __END__
 
-=head1 NAME
-
 =encoding utf-8
 
 =head1 NAME
 
-TL::Value - Verification and conversion of value (ja)
-
-=head1 NAME (ja)
-
-TL::Value::JA - 値の検証や変換
+TL::Value - 値の検証や変換
 
 =head1 SYNOPSIS
 

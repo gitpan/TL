@@ -162,11 +162,7 @@ __END__
 
 =head1 NAME
 
-TL::MemorySentinel - Watch of update of memory (ja)
-
-=head1 NAME (ja)
-
-TL::MemorySentinel::JA - メモリ使用状況の監視
+TL::MemorySentinel - メモリ使用状況の監視
 
 =head1 SYNOPSIS
 

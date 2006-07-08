@@ -839,11 +839,7 @@ __END__
 
 =head1 NAME
 
-TL::Form - Form class (ja)
-
-=head1 NAME (ja)
-
-TL::Form::JA - フォーム情報
+TL::Form - フォーム情報
 
 =head1 SYNOPSIS
 

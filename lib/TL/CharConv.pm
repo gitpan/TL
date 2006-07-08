@@ -214,11 +214,7 @@ __END__
 
 =head1 NAME
 
-TL::CharConv - The internal class (ja)
-
-=head1 NAME (ja)
-
-TL::CharConv::JA - 内部クラス
+TL::CharConv - 内部クラス
 
 =head1 DESCRIPTION
 

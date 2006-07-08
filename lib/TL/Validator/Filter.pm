@@ -488,11 +488,7 @@ __END__
 
 =head1 NAME
 
-TL::Validator::Filter - TL::Validator filter I/F (ja)
-
-=head1 NAME (ja)
-
-TL::Validator::Filter::JA - TL::Validator フィルタ I/F
+TL::Validator::Filter - TL::Validator フィルタ I/F
 
 =head1 DESCRIPTION
 

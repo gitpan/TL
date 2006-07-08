@@ -1131,11 +1131,7 @@ __END__
 
 =head1 NAME
 
-TL::Template::Node - Template node object (ja)
-
-=head1 NAME (ja)
-
-TL::Template::Node::JA - Templateノードオブジェクト
+TL::Template::Node - Templateノードオブジェクト
 
 =head1 DESCRIPTION
 

@@ -1,4 +1,4 @@
-use Test::More tests => 62;
+use Test::More;
 use Test::Exception;
 use strict;
 use warnings;
@@ -30,9 +30,19 @@ END {
     unlink "tmp$$.ini";
 }
 
-my $planned;
-dies_ok {$TL->getDB} '_getInstance die';
+eval {
+    $TL->errorTrap(
+	-DB   => 'DB',
+	-main => sub {},
+       );
+};
+if ($@) {
+	plan skip_all => "Failed to connect to local MySQL: $@";
+}
 
+plan tests => 62;
+
+dies_ok {$TL->getDB} '_getInstance die';
 
 eval {
     $TL->errorTrap(
@@ -41,16 +51,10 @@ eval {
        );
 };
 if ($@) {
-	if (not $planned) {
-		plan skip_all => "Failed to connect to local MySQL: $@";
-	}
-	else {
-		die $@;
-	}
+	die $@;
 }
 
 sub main {
-	$planned = 1;
 
     my $DB;
 	dies_ok {$TL->getDB(\123)} '_getInstance die';

@@ -50,11 +50,7 @@ __END__
 
 =head1 NAME
 
-TL::Filter::Binary - This filter doesn't change the content (ja)
-
-=head1 NAME (ja)
-
-TL::Filter::Binary::JA - 内容に変更を加えない出力フィルタ
+TL::Filter::Binary - 内容に変更を加えない出力フィルタ
 
 =head1 SYNOPSIS
 

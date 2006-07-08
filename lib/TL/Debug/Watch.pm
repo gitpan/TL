@@ -346,11 +346,7 @@ __END__
 
 =head1 NAME
 
-TL::Debug::Watch - Internal class for $TL->watch (ja)
-
-=head1 NAME (ja)
-
-TL::Debug::Watch::JA - $TL->watch用内部クラス
+TL::Debug::Watch - $TL->watch用内部クラス
 
 =head2 METHODS
 

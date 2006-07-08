@@ -234,11 +234,7 @@ __END__
 
 =head1 NAME
 
-TL::Filter - CGI output filter (ja)
-
-=head1 NAME (ja)
-
-TL::Filter::JA - CGI出力加工
+TL::Filter - CGI出力加工
 
 =head1 SYNOPSIS
 

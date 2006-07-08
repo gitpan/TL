@@ -633,11 +633,7 @@ __END__
 
 =head1 NAME
 
-TL::HtmlMail - HTMLMail create (ja)
-
-=head1 NAME (ja)
-
-TL::HtmlMail::JA - 指定されたURLからデータを取得し、HTMLメールを作成する。
+TL::HtmlMail - 指定されたURLからデータを取得し、HTMLメールを作成する。
 
 =head1 SYNOPSIS
 

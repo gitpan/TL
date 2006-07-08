@@ -415,11 +415,7 @@ __END__
 
 =head1 NAME
 
-TL::TagCheck - Check on tag of HTML (ja)
-
-=head1 NAME (ja)
-
-TL::TagCheck::JA - HTMLのタグのチェック
+TL::TagCheck - HTMLのタグのチェック
 
 =head1 SYNOPSIS
 

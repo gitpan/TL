@@ -84,11 +84,7 @@ __END__
 
 =head1 NAME
 
-TL::InputFilter::SEO - input filter for SEO (ja)
-
-=head1 NAME (ja)
-
-TL::InputFilter::SEO::JA - SEO入力フィルタ
+TL::InputFilter::SEO - SEO入力フィルタ
 
 =head1 SYNOPSIS
 

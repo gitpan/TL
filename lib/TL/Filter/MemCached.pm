@@ -116,11 +116,7 @@ __END__
 
 =head1 NAME
 
-TL::Filter::MemCached - Filter used when MemCached (ja)
-
-=head1 NAME (ja)
-
-TL::Filter::MemCached::JA - MemCachedを使用するときに使用するフィルタ
+TL::Filter::MemCached - MemCachedを使用するときに使用するフィルタ
 
 =head1 SYNOPSIS
 
@@ -184,6 +180,8 @@ UTF-8，Shift_JIS，EUC-JP，ISO-2022-JP
 =item L<TL>
 
 =item L<TL::Filter>
+
+=item L<TL::MemCached>
 
 =back
 

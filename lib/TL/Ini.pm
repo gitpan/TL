@@ -407,11 +407,7 @@ __END__
 
 =head1 NAME
 
-TL::Ini - The configuration file is treated (ja)
-
-=head1 NAME (ja)
-
-TL::Ini::JA - 設定ファイルを読み書きする
+TL::Ini - 設定ファイルを読み書きする
 
 =head1 SYNOPSIS
 

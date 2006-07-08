@@ -101,11 +101,7 @@ __END__
 
 =head1 NAME
 
-TL::Filter::TEXT - output filter for TEXT (ja)
-
-=head1 NAME (ja)
-
-TL::Filter::TEXT::JA - テキスト出力フィルタ
+TL::Filter::TEXT - テキスト出力フィルタ
 
 =head1 SYNOPSIS
 

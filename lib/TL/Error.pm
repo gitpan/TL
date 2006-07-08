@@ -1276,11 +1276,7 @@ __END__
 
 =head1 NAME
 
-TL::Error - Internal class (ja)
-
-=head1 NAME (ja)
-
-TL::Error::JA - 内部クラス
+TL::Error - 内部クラス
 
 =head1 DESCRIPTION
 

@@ -324,11 +324,7 @@ __END__
 
 =head1 NAME
 
-TL::Filter::SEO - output filter for SEO (ja)
-
-=head1 NAME (ja)
-
-TL::Filter::SEO::JA - SEO出力フィルタ
+TL::Filter::SEO - SEO出力フィルタ
 
 =head1 SYNOPSIS
 

@@ -48,11 +48,7 @@ __END__
 
 =head1 NAME
 
-TL::Filter::HeaderOnly - Only the header is output. (ja)
-
-=head1 NAME (ja)
-
-TL::Filter::HeaderOnly::JA - ヘッダのみ出力
+TL::Filter::HeaderOnly - ヘッダのみ出力
 
 =head1 SYNOPSIS
 

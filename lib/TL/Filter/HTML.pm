@@ -354,11 +354,7 @@ __END__
 
 =head1 NAME
 
-TL::Filter::HTML - Output filter for HTML (ja)
-
-=head1 NAME (ja)
-
-TL::Filter::HTML::JA - 通常HTML用出力フィルタ
+TL::Filter::HTML - 通常HTML用出力フィルタ
 
 =head1 SYNOPSIS
 

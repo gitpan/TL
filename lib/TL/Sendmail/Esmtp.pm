@@ -55,11 +55,7 @@ __END__
 
 =head1 NAME
 
-TL::Sendmail::Esmtp - Mail Sending that uses Forcast esmtp (ja)
-
-=head1 NAME (ja)
-
-TL::Sendmail::Esmtp::JA - Forcast esmtpを使用するメール送信
+TL::Sendmail::Esmtp - Forcast esmtpを使用するメール送信
 
 =head1 DESCRIPTION
 

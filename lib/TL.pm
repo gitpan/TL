@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use UNIVERSAL qw(isa);
 
-our $VERSION = '0.10_02';
+our $VERSION = '0.10_03';
 
 our $TL = TL->__new;
 our @specialization = ();
