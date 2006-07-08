@@ -175,6 +175,8 @@ sub prepareSmimeMessage {
 
 __END__
 
+=encoding utf-8
+
 =head1 NAME
 
 TL::SMIME - S/MIMEの署名、検証、暗号化、復号化

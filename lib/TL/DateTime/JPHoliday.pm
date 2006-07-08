@@ -381,7 +381,7 @@ TL::DateTime::JPHoliday - 日本の祝日
 
 =head1 DESCRIPTION
 
- L<TL::DateTime> によって内部的に使用される。祝日法のみ対応。
+L<TL::DateTime> によって内部的に使用される。祝日法のみ対応。
 
 =cut
 

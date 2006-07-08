@@ -593,6 +593,8 @@ sub toStr {
 
 __END__
 
+=encoding utf-8
+
 =head1 NAME
 
 TL::HtmlFilter - HTMLのパースと書き換え

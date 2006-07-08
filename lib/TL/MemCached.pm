@@ -138,13 +138,13 @@ TL::MemCached - キャッシュを扱う
 
 =head1 SYNOPSIS
 
-#キャッシュにセット
+  #キャッシュにセット
   $TL->newMemCached->set($key,$data);
-
-#キャッシュから取得
+  
+  #キャッシュから取得
   my $cachedata = $TL->newMemCached->get($key);
-
-#キャッシュから削除
+  
+  #キャッシュから削除
   $TL->newMemCached->delete($key);
 
 =head1 DESCRIPTION
