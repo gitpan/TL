@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use UNIVERSAL qw(isa);
 
-our $VERSION = '0.10_04';
+our $VERSION = '0.10_05';
 
 our $TL = TL->__new;
 our @specialization = ();
@@ -1864,6 +1864,7 @@ servers = localhost:11211
 =over 4
 
 =item 読み込み側例（ページ全体をキャッシュ）
+
   #topはキャッシュするキー。画面毎にキーを設定する。ページャーなどを利用する場合、画面毎になる点を注意する（page-1等にする）
   #キャッシュにヒットした場合、時間を比較して、304でリダイレクトするか、メモリから読み込んで表示する
   #returnした後にprintやflushなど出力する操作は不可なため注意する事
@@ -1883,6 +1884,7 @@ servers = localhost:11211
   $TL->deleteCache('top2');
 
 =item 読み込み側例（ユーザー名等一部に固有の情報を埋め込んでいる場合）
+
   #クッキーデータの取得、クッキーに固有の情報を入れておくと高速に動作出来る（DB等から読み込みTL:Formクラスにセットしても可）
   my $cookiedata = $TL->getCookie->get('TLTEST');
   $cookiedata->set('<&NAME>' => $name) if(!$cookiedata->exists('name'));

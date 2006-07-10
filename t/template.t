@@ -16,7 +16,8 @@ BEGIN {
 }
 
 END {
-    unlink "include$$.ini";
+    unlink "tmp$$.ini";
+    unlink "include$$.txt";
 }
 
 my $TMPL3_XML = qq{

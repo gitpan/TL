@@ -1,5 +1,13 @@
 Revision history for TL
 
+0.10_05 Mon Jul 10 10:58 JST 2006
+	- ドキュメント修正、make test時にファイルが残る問題の修正
+0.10_04 Sat Jul 08 16:56 JST 2006
+	- CPANで文字化け等していたPODの不都合を修正
+0.10_03 Sat Jul 08 13:28 JST 2006
+	- DBが利用できないときテストに失敗する問題を修正
+	- templateテストでエラーが出ている問題を修正
+	- PODのNAMEに直接日本語を書くように修正
 0.10_02 Fri Jul 07 21:18 JST 2006
 	- encoding指定ミスを修正
 0.10_01 Fri Jul 07 16:34 JST 2006
