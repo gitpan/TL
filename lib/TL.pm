@@ -6,10 +6,11 @@ use strict;
 use warnings;
 use UNIVERSAL qw(isa);
 
-our $VERSION = '0.10_05';
+our $VERSION = '0.10_06';
 
 our $TL = TL->__new;
 our @specialization = ();
+our $LOG_SERIAL = 0;
 
 require Unicode::Japanese;
 
@@ -286,7 +287,7 @@ sub unescapeSqlLike {
 sub startCgi {
 	my $this = shift;
 	my $param = { @_ };
-
+	
 	$this->{outputbuffering} = $this->INI->get(TL => 'outputbuffering', 0);
 
 	eval {
@@ -585,7 +586,7 @@ sub _log {
 	$localtime[5] += 1900;
 
 	$log = sprintf('== %02d:%02d:%02d(%08x) %04x %04x [%s]',
-		@localtime[2,1,0], $time, $$, 0, $group)
+		@localtime[2,1,0], $time, $$, ($LOG_SERIAL % 0x10000), $group)
 		. "\n" . $log . "\n";
 
 	if(!exists($this->{logdir})) {
@@ -620,6 +621,7 @@ sub _log {
 			$this->sendError(
 				title => "TL LogError",
 				error => "Failed to create a directory [$path]($!)",
+				nologging => 1,
 			);
 			exit;
 		}
@@ -638,6 +640,7 @@ sub _log {
 			$this->sendError(
 				title => "TL LogError",
 				error => "Failed to open a log [$path]($!)",
+				nologging => 1,
 			);
 			exit;
 		}
@@ -654,6 +657,18 @@ sub _log {
 	flock($fh, 8);
 
 	$this;
+}
+
+sub getLogHeader {
+	my $this = shift;
+	
+	my $time = time;
+	my @localtime = localtime($time);
+	$localtime[4]++;
+	$localtime[5] += 1900;
+
+	sprintf('%02d:%02d:%02d(%08x) %04x %04x',
+		@localtime[2,1,0], $time, $$, ($LOG_SERIAL % 0x10000));
 }
 
 sub setHook {
@@ -940,14 +955,16 @@ sub sendError {
 				Subject => "$opts->{title} $locinfo",
 		)->setBody(join "\n", @lines)->toStr;
 
-		$this->newSendmail($group)->connect->send(
+		$this->newSendmail($group)->logging(0)->connect->send(
 			from => $rcpt,
 			rcpt => $rcpt,
 			data => $mail,
 		)->disconnect;
 	};
 	if(my $err = $@) {
-		$this->log(__PACKAGE__, "Failed to send an error mail: $err");
+		if(! $opts->{nologging}) {
+			$this->log(__PACKAGE__, "Failed to send an error mail: $err");
+		}
 	}
 }
 
@@ -1670,6 +1687,8 @@ sub __executeCgi {
 	my $this = shift;
 	my $mainfunc = shift;
 
+	$LOG_SERIAL++;
+	
 	# ここで$CGIを作り、constにする。
 	$this->{CGIORIG} = $this->__decodeCgi->const;
 	$this->{CGI} = $this->{CGIORIG}->clone->_trace;
@@ -2142,6 +2161,15 @@ onerrorが設定されていた場合、関数が存在しなければ onerror�
   $TL->log($group => $log)
 
 ログを記録する。グループとログデータの２つを受け取る。
+
+ログにはヘッダが付けられ、ヘッダは「時刻(epoch値の16進数8桁表現) プロセスIDの16進数4桁表現 FastCGIのリクエスト回数の16進数4桁表現 [グループ]」の形で付けられる。
+
+=item C<< getLogHeader >>
+
+  my $logid = $TL->getLogHeader
+
+ログを記録するときのヘッダと同じ形式の文字列を生成する。
+「時刻(epoch値の16進数8桁表現) プロセスIDの16進数4桁表現 FastCGIのリクエスト回数の16進数4桁表現」の形の文字列が返される。
 
 =item C<< setHook >>
 

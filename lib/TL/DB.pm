@@ -299,7 +299,7 @@ sub execute {
 		eval {
 			local $SIG{__DIE__} = 'DEFAULT';
 
-			$sth->{sth}->execute;
+			$sth->{ret} = $sth->{sth}->execute;
 		};
 		if($@) {
 			if($this->{type} eq 'mysql'
@@ -366,6 +366,29 @@ sub selectAllArray {
 		push @$result, [ @$data ];
 	}
 	$result;
+}
+
+sub selectRowHash {
+	my $this = shift;
+	my $sth = $this->execute(@_);
+	
+	my $data = $sth->fetchHash();
+	$data = $data ? {%$data} : {};
+	$sth->finish();
+	
+	$data;
+}
+
+sub selectRowArray {
+	my $this = shift;
+	my $sth = $this->execute(@_);
+	
+	
+	my $data = $sth->fetchArray();
+	$data = $data ? [@$data] : [];
+	$sth->finish();
+	
+	$data;
 }
 
 sub lock {
@@ -912,6 +935,7 @@ sub new {
 	$this->{db_center} = $db; # TL::DB
 	$this->{dbh} = $dbh; # TL::DB::DBH
 	$this->{sth} = $sth; # native sth
+	$this->{ret} = undef; # last return value
 	$this->{id} = $STH_ID++;
 
 	$this;
@@ -972,6 +996,11 @@ sub fetchArray {
 	}
 
 	$array;
+}
+
+sub ret {
+	my $this = shift;
+	$this->{ret};
 }
 
 sub rows {
@@ -1158,6 +1187,8 @@ L<< $TL->startCgi|TL/"startCgi" >> /  L<< $TL->errorTrap|TL/"errorTrap" >> の�
 
 L<< $TL->newDB|"$TL->newDB" >> で作成した TL::DB オブジェクトに関しては、このメソッドを呼び出し、DBへ接続する必要がある。
 
+connect時には、AutoCommit 及び RaiseError オプションは 1 が指定され、PrintError オプションは 0 が指定される。
+
 =item C<< disconnect >>
 
 DBから切断する。
@@ -1237,8 +1268,8 @@ L</"setDefaultSet"> による設定がされていない場合は、エラーと
 SELECT結果をハッシュの配列へのリファレンスで返す。
 
   my $arrayofhash = $DB->selectAllHash($sql, $param...);
-  foreach my $key (@$arrayofhash){
-     $TL->log(DBDATA => $arrayofhash->{$key});
+  foreach my $hash (@$arrayofhash){
+     $TL->log(DBDATA => "name of id $hash->{id} is $hash->{name}");
   }
 
 =item C<< selectAllArray >>
@@ -1252,6 +1283,28 @@ SELECT結果を配列の配列へのリファレンスで返す。
   foreach my $array (@$arrayofarray){
      $TL->log(DBDATA => $array->[0]);
   }
+
+=item C<< selectRowHash >>
+
+  $DB->selectRowHash($sql, $param...)
+  $DB->selectRowHash(\'SET_W_Trans' => $sql, $param...)
+
+SELECT結果の最初の１行をハッシュへのリファレンスで返す。
+実行後、内部でfinishする。
+
+  my $hash = $DB->selectRowHash($sql, $param...);
+  $TL->log(DBDATA => "name of id $hash->{id} is $hash->{name}");
+
+=item C<< selectRowArray >>
+
+  $DB->selectRowArray($sql, $param...)
+  $DB->selectRowArray(\'SET_W_Trans' => $sql, $param...)
+
+SELECT結果の最初の１行を配列へのリファレンスで返す。
+実行後、内部でfinishする。
+
+  my $array = $DB->selectRowArray($sql, $param...);
+  $TL->log(DBDATA => $array->[0]);
 
 =item C<< lock >>
 
@@ -1321,6 +1374,12 @@ DBセット内のDBハンドルを返す。
   $sth->fetchArray
 
 配列へのリファレンスで１行取り出す。
+
+=item C<< ret >>
+
+  $sth->ret
+
+最後に実行した execute の戻り値を返す。
 
 =item C<< rows >>
 

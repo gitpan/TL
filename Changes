@@ -1,5 +1,21 @@
 Revision history for TL
 
+0.10_06 Fri Jul 14 19:02:48 JST 2006
+	- DBのsthクラスに最後のexecute戻り値を取得するretメソッドを追加
+	- テスト時の出力を改善
+	- DateTimeクラスにaddBusinessDayを追加
+	- DateTimeクラスのisHolidayにオプション追加
+	- DateTimeクラスのisHolidayのデフォルトの挙動を変更
+	- READMEファイルにHPへのURLを追加
+	- Makefile.PLでCache::Memcached::XSを追加
+	- Makefile.PLでDigest::MD5を削除
+	- Makefile.PLでDigest::SHA1を削除
+	- ログ出力時にディレクトリまたはファイルが作成できず、かつメール通知の設定がされていて
+	  メール通知できない状況で永久ループするバグを修正
+	- ログの出力フォーマットに関するドキュメントを追加。
+	- $TL->getLogHeader メソッドを追加。
+	- マニュアルの整形ミスを修正。
+	- TL::DB#selectRowHash, selectRowArray を追加。
 0.10_05 Mon Jul 10 10:58 JST 2006
 	- ドキュメント修正、make test時にファイルが残る問題の修正
 0.10_04 Sat Jul 08 16:56 JST 2006

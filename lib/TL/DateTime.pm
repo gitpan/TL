@@ -610,8 +610,19 @@ sub getAllHolidays {
 
 sub isHoliday {
 	my $this = shift;
+	my $type = shift;
+	
+	$type = 0 if(!defined($type));
 
-	defined $this->getHolidayName;
+	if($type == 1) {
+		return 1 if($this->getWday == 0 || defined($this->getHolidayName));
+	} elsif($type == 2) {
+		return 1 if(defined($this->getHolidayName));
+	} else {
+		return 1 if($this->getWday == 0 || $this->getWday == 6 || defined($this->getHolidayName));
+	}
+
+	undef;
 }
 
 sub isLeapYear {
@@ -1003,6 +1014,28 @@ sub firstDay {
 sub lastDay {
 	my $this = shift;
 	$this->setDay(-1);
+}
+
+sub addBusinessDay {
+	my $this = shift;
+	my $day = shift;
+	my $type = shift;
+
+	if(!defined($day)) {
+		die __PACKAGE__."#addBusinessDay, ARG[1] was undef.\n";
+	} elsif(ref($day)) {
+		die __PACKAGE__."#addBusinessDay, ARG[1] was Ref.\n";
+	} elsif($day !~ m/^-?\d+$/) {
+		die __PACKAGE__."#addBusinessDay, ARG[1] was not numeric.\n";
+	}
+
+	my $dt = $this->addDay($day);
+	while($dt->isHoliday($type)) {
+		$day++;
+		$dt = $this->addDay($day);
+	}
+
+	$dt;
 }
 
 sub toStr {
@@ -1827,9 +1860,19 @@ getYearと同様。
 
 =item C<< isHoliday >>
 
-  $bool = $dt->isHoliday;
+  $bool = $dt->isHoliday($type);
 
-この日が日本の祝祭日であれば 1 を、そうでなければ undef を返す。
+この日が特定の日であれば 1 を、そうでなければ undef を返す。
+
+特定の日とは以下の通り。
+
+$typeが0の場合、土日及び日本の祝祭日。
+
+$typeが1の場合、日及び日本の祝祭日。
+
+$typeが2の場合、日本の祝祭日。
+
+デフォルトは0。
 
 =item C<< getHolidayName >>
 
@@ -1913,6 +1956,28 @@ addSecond と同様だが、もし変更前の日が変更後の年/月に存在
 =item C<< addYear >>
 
 addMonth と同様。
+
+=item C<< addBusinessDay >>
+
+  $dt2 = $dt->addBusinessDay($day,$type);
+
+$day 営業日後を表す DateTime オブジェクトを新たに生成して返す。
+お盆や年末年始などは考慮しない。
+
+例としては、12月31日で、$dayに1を指定した場合、翌年の1月2日が返る。
+（2日が振替休日の場合、3日が返る）
+
+休業日は$typeで決定する。
+
+$typeが0の場合、土日及び日本の祝祭日。
+
+$typeが1の場合、日及び日本の祝祭日。
+
+$typeが2の場合、日本の祝祭日。
+
+を休業日として営業日を判定する。
+
+デフォルトは0。
 
 =item C<< nextDay >>
 

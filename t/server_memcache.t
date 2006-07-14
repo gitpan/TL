@@ -82,7 +82,7 @@ sub start_server () {
 		$SERVER_PID = $_;
 
 		# サーバーが起動するまで1秒待つ
-		diag("Waiting 1 sec for the coming of server... [pid:$SERVER_PID]");
+		#diag("Waiting 1 sec for the coming of server... [pid:$SERVER_PID]");
 		sleep 1;
     } else {
 		my $script;
@@ -218,7 +218,7 @@ sub start_server () {
 
 sub stop_server () {
     if ($SERVER_PID) {
-		diag("Waiting for the going of server... [pid:$SERVER_PID]");
+		#diag("Waiting for the going of server... [pid:$SERVER_PID]");
 		
 		kill 9, $SERVER_PID;
 		wait;

@@ -1,17 +1,16 @@
 # http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         TL
-version:      0.10_05
+version:      0.10_06
 version_from: lib/TL.pm
 installdirs:  site
 requires:
+    Cache::Memcached::XS:          0
     Crypt::CBC:                    0
     Crypt::Rijndael:               0
     Data::Dumper:                  0
     DBI:                           0
     Digest::HMAC_SHA1:             0
-    Digest::MD5:                   0
-    Digest::SHA1:                  0
     File::Path:                    0
     IO::Scalar:                    0
     MIME::Tools:                   5.411
@@ -22,4 +21,4 @@ requires:
     Unicode::Japanese:             0
 
 distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.28
+generated_by: ExtUtils::MakeMaker version 6.17

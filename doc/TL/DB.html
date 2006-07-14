@@ -391,6 +391,12 @@ SQL型名として扱われる。配列が複数の値を持つ時には、そ�
 </span>
 </p>
 
+<p>
+<span class="pod_lang">connect時には、AutoCommit 及び RaiseError オプションは 1 が指定され、PrintError オプションは 0 が指定される。
+
+</span>
+</p>
+
 </dd>
 <dt><a id="item_disconnect"><span class="pod_lang"><code class="pod_iseq_C">disconnect</code>
 
@@ -555,8 +561,8 @@ DBセットでSQLが実行される。
 </p>
 
 <pre class="pod_verbatim"><code>  my $arrayofhash = $DB-&gt;selectAllHash($sql, $param...);
-  foreach my $key (@$arrayofhash){
-     $TL-&gt;log(DBDATA =&gt; $arrayofhash-&gt;{$key});
+  foreach my $hash (@$arrayofhash){
+     $TL-&gt;log(DBDATA =&gt; &quot;name of id $hash-&gt;{id} is $hash-&gt;{name}&quot;);
   }</code></pre>
 
 </dd>
@@ -577,6 +583,42 @@ DBセットでSQLが実行される。
   foreach my $array (@$arrayofarray){
      $TL-&gt;log(DBDATA =&gt; $array-&gt;[0]);
   }</code></pre>
+
+</dd>
+<dt><a id="item_selectRowHash"><span class="pod_lang"><code class="pod_iseq_C">selectRowHash</code>
+
+</span></a></dt>
+<dd>
+<pre class="pod_verbatim"><code>  $DB-&gt;selectRowHash($sql, $param...)
+  $DB-&gt;selectRowHash(\'SET_W_Trans' =&gt; $sql, $param...)</code></pre>
+
+<p>
+<span class="pod_lang">SELECT結果の最初の１行をハッシュへのリファレンスで返す。
+実行後、内部でfinishする。
+
+</span>
+</p>
+
+<pre class="pod_verbatim"><code>  my $hash = $DB-&gt;selectRowHash($sql, $param...);
+  $TL-&gt;log(DBDATA =&gt; &quot;name of id $hash-&gt;{id} is $hash-&gt;{name}&quot;);</code></pre>
+
+</dd>
+<dt><a id="item_selectRowArray"><span class="pod_lang"><code class="pod_iseq_C">selectRowArray</code>
+
+</span></a></dt>
+<dd>
+<pre class="pod_verbatim"><code>  $DB-&gt;selectRowArray($sql, $param...)
+  $DB-&gt;selectRowArray(\'SET_W_Trans' =&gt; $sql, $param...)</code></pre>
+
+<p>
+<span class="pod_lang">SELECT結果の最初の１行を配列へのリファレンスで返す。
+実行後、内部でfinishする。
+
+</span>
+</p>
+
+<pre class="pod_verbatim"><code>  my $array = $DB-&gt;selectRowArray($sql, $param...);
+  $TL-&gt;log(DBDATA =&gt; $array-&gt;[0]);</code></pre>
 
 </dd>
 <dt><a id="item_lock"><span class="pod_lang"><code class="pod_iseq_C">lock</code>
@@ -713,6 +755,19 @@ DBセットでSQLが実行される。
 
 <p>
 <span class="pod_lang">配列へのリファレンスで１行取り出す。
+
+</span>
+</p>
+
+</dd>
+<dt><a id="item_ret"><span class="pod_lang"><code class="pod_iseq_C">ret</code>
+
+</span></a></dt>
+<dd>
+<pre class="pod_verbatim"><code>  $sth-&gt;ret</code></pre>
+
+<p>
+<span class="pod_lang">最後に実行した execute の戻り値を返す。
 
 </span>
 </p>
@@ -1033,10 +1088,13 @@ TL::DB - DBIのラッパ
 <li><a href="#item_namequery">namequery</a></li>
 <li><a href="#item_password">password</a></li>
 <li><a href="#item_prepare/executeXe3X82X92Xe5X88X86Xe3X81X91Xe3X81XaaXe3X81X84Xe3X80X82fetchXe3X81XafXe5X88X86Xe3X81X91Xe3X82X8bXe3X80X82">prepare/executeを分けない。fetchは分ける。</a></li>
+<li><a href="#item_ret">ret</a></li>
 <li><a href="#item_rollback">rollback</a></li>
 <li><a href="#item_rows">rows</a></li>
 <li><a href="#item_selectAllArray">selectAllArray</a></li>
 <li><a href="#item_selectAllHash">selectAllHash</a></li>
+<li><a href="#item_selectRowArray">selectRowArray</a></li>
+<li><a href="#item_selectRowHash">selectRowHash</a></li>
 <li><a href="#item_setBufferSize">setBufferSize</a></li>
 <li><a href="#item_setDefaultSet">setDefaultSet</a></li>
 <li><a href="#item_symquote">symquote</a></li>

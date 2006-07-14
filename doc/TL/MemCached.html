@@ -85,26 +85,14 @@ TL::MemCached - キャッシュを扱う
 
 </span></a></h1>
 
-<p>
-<span class="pod_lang">#キャッシュにセット
+<pre class="pod_verbatim"><code>  #キャッシュにセット
   $TL-&gt;newMemCached-&gt;set($key,$data);
-
-</span>
-</p>
-
-<p>
-<span class="pod_lang">#キャッシュから取得
+  
+  #キャッシュから取得
   my $cachedata = $TL-&gt;newMemCached-&gt;get($key);
-
-</span>
-</p>
-
-<p>
-<span class="pod_lang">#キャッシュから削除
-  $TL-&gt;newMemCached-&gt;delete($key);
-
-</span>
-</p>
+  
+  #キャッシュから削除
+  $TL-&gt;newMemCached-&gt;delete($key);</code></pre>
 
 
 <hr />

@@ -40,7 +40,7 @@ if ($@) {
 	plan skip_all => "Failed to connect to local MySQL: $@";
 }
 
-plan tests => 62;
+plan tests => 67;
 
 dies_ok {$TL->getDB} '_getInstance die';
 
@@ -155,12 +155,14 @@ sub main {
 	LIMIT ??
     },[])} 'execute die';
 
-	ok($DB->execute(q{
+	my $insertsth;
+	ok($insertsth = $DB->execute(q{
         INSERT INTO TripletaiL_DB_Test
                (foo, bar)
         VALUES (??)
     }, [1, [2, \'SQL_VARCHAR']]), 'execute with partly typed parameters');
-
+	is($insertsth->ret, 1, 'execute return value');
+	
 	ok($DB->execute(q{
         INSERT INTO TripletaiL_DB_Test
                (foo, bar)
@@ -184,6 +186,27 @@ sub main {
          WHERE foo = ?
     }, 'QQQ'), 'selectAllArray');
 	is_deeply($array, [['QQQ', 'WWW', 'EEE']], 'content of selectAllArray()');
+
+	is_deeply($DB->selectRowHash(q{
+		SELECT *
+		  FROM TripletaiL_DB_Test
+	}), {foo => 'QQQ', bar => 'WWW', baz => 'EEE'}, 'selectRowHash');
+	is_deeply($DB->selectRowHash(q{
+		SELECT *
+		  FROM TripletaiL_DB_Test
+		 WHERE 0
+	}), {}, 'selectRowHash, no-record becomes empty hashref');
+
+	is_deeply($DB->selectRowArray(q{
+		SELECT *
+		  FROM TripletaiL_DB_Test
+        }), ['QQQ', 'WWW', 'EEE'], 'selectRowArray');
+
+	is_deeply($DB->selectRowArray(q{
+		SELECT *
+		  FROM TripletaiL_DB_Test
+		 WHERE 0
+	}), [], 'selectRowArray, no-record becomes empty arrayref');
 
 	ok($DB->lock(read => 'TripletaiL_DB_Test'), 'lock');
 	dies_ok {$DB->lock(read => 'TripletaiL_DB_Test')} 'lock die';

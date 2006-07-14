@@ -398,17 +398,18 @@ servers = localhost:11211
 </p>
 
 <dl>
-<dt><a id="item_Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X81XbfXe5X81Xb4Xe4XbeX8bXefXbcX88Xe3X83X9aXe3X83XbcXe3X82Xb8Xe5X85Xa8Xe4XbdX93Xe3X82X92Xe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5XefXbcX89_#topXe3X81XafXe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5Xe3X81X99Xe3X82X8bXe3X82XadXe3X83XbcXe3X80X82Xe7X94XbbXe9X9dXa2Xe6XafX8eXe3X81XabXe3X82XadXe3X83XbcXe3X82X92Xe8Xa8XadXe5XaeX9aXe3X81X99Xe3X82X8bXe3X80X82Xe3X83X9aXe3X83XbcXe3X82Xb8Xe3X83Xa3Xe3X83XbcXe3X81XaaXe3X81Xa9Xe3X82X92Xe5X88Xa9Xe7X94Xa8Xe3X81X99Xe3X82X8bXe5Xa0Xb4Xe5X90X88Xe3X80X81Xe7X94XbbXe9X9dXa2Xe6XafX8eXe3X81XabXe3X81XaaXe3X82X8bXe7X82Xb9Xe3X82X92Xe6Xb3Xa8Xe6X84X8fXe3X81X99Xe3X82X8bXefXbcX88page-1Xe7XadX89Xe3X81XabXe3X81X99Xe3X82X8bXefXbcX89_#Xe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5Xe3X81XabXe3X83X92Xe3X83X83Xe3X83X88Xe3X81X97Xe3X81X9fXe5Xa0Xb4Xe5X90X88Xe3X80X81Xe6X99X82Xe9X96X93Xe3X82X92Xe6XafX94Xe8XbcX83Xe3X81X97Xe3X81Xa6Xe3X80X81304Xe3X81Xa7Xe3X83XaaXe3X83X80Xe3X82Xa4Xe3X83XacXe3X82XafXe3X83X88Xe3X81X99Xe3X82X8bXe3X81X8bXe3X80X81Xe3X83Xa1Xe3X83Xa2Xe3X83XaaXe3X81X8bXe3X82X89Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X82X93Xe3X81Xa7Xe8Xa1Xa8Xe7Xa4XbaXe3X81X99Xe3X82X8b_#returnXe3X81X97Xe3X81X9fXe5XbeX8cXe3X81XabprintXe3X82X84flushXe3X81XaaXe3X81Xa9Xe5X87XbaXe5X8aX9bXe3X81X99Xe3X82X8bXe6X93X8dXe4XbdX9cXe3X81XafXe4Xb8X8dXe5X8fXafXe3X81XaaXe3X81X9fXe3X82X81Xe6Xb3Xa8Xe6X84X8fXe3X81X99Xe3X82X8bXe4XbaX8b_return_if(!defined($TL->printCacheUnlessModified('top')));_#Xe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5Xe3X81X99Xe3X82X8bXe3X81X93Xe3X81Xa8Xe3X82X92Xe5XaeXa3Xe8Xa8X80Xe3X81X99Xe3X82X8bXe3X80X82Xe3X81XaaXe3X81X8aXe3X80X81Xe5XaeXa3Xe8Xa8X80Xe3X81XafprintCacheUnlessModifiedXe3X82X88Xe3X82X8aXe5XbeX8cXe3X81Xa7Xe3X81X82Xe3X82X8cXe3X81Xb0Xe3X80X81Xe3X81Xa9Xe3X81XaeXe6X99X82Xe7X82Xb9Xe3X81Xa7Xe8Xa1X8cXe3X81Xa3Xe3X81Xa6Xe3X82X82Xe3X81X8bXe3X81XbeXe3X82X8fXe3X81XaaXe3X81X84_$TL->setCache('top');"><span class="pod_lang">読み込み側例（ページ全体をキャッシュ）
-  #topはキャッシュするキー。画面毎にキーを設定する。ページャーなどを利用する場合、画面毎になる点を注意する（page-1等にする）
+<dt><a id="item_Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X81XbfXe5X81Xb4Xe4XbeX8bXefXbcX88Xe3X83X9aXe3X83XbcXe3X82Xb8Xe5X85Xa8Xe4XbdX93Xe3X82X92Xe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5XefXbcX89"><span class="pod_lang">読み込み側例（ページ全体をキャッシュ）
+
+</span></a></dt>
+<dd>
+<pre class="pod_verbatim"><code>  #topはキャッシュするキー。画面毎にキーを設定する。ページャーなどを利用する場合、画面毎になる点を注意する（page-1等にする）
   #キャッシュにヒットした場合、時間を比較して、304でリダイレクトするか、メモリから読み込んで表示する
   #returnした後にprintやflushなど出力する操作は不可なため注意する事
   return if(!defined($TL-&gt;printCacheUnlessModified('top')));
   #キャッシュすることを宣言する。なお、宣言はprintCacheUnlessModifiedより後であれば、どの時点で行ってもかまわない
   $TL-&gt;setCache('top');
 
-</span></a></dt>
-<dd>
-<pre class="pod_verbatim"><code>  #実際のスクリプトを記述し、出力を行う
+  #実際のスクリプトを記述し、出力を行う
   
   $TL-&gt;print('test code.');</code></pre>
 
@@ -423,15 +424,16 @@ servers = localhost:11211
   $TL-&gt;deleteCache('top2');</code></pre>
 
 </dd>
-<dt><a id="item_Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X81XbfXe5X81Xb4Xe4XbeX8bXefXbcX88Xe3X83Xa6Xe3X83XbcXe3X82Xb6Xe3X83XbcXe5X90X8dXe7XadX89Xe4Xb8X80Xe9X83Xa8Xe3X81XabXe5X9bXbaXe6X9cX89Xe3X81XaeXe6X83X85Xe5Xa0Xb1Xe3X82X92Xe5X9fX8bXe3X82X81Xe8XbeXbcXe3X82X93Xe3X81Xa7Xe3X81X84Xe3X82X8bXe5Xa0Xb4Xe5X90X88XefXbcX89_#Xe3X82XafXe3X83X83Xe3X82XadXe3X83XbcXe3X83X87Xe3X83XbcXe3X82XbfXe3X81XaeXe5X8fX96Xe5XbeX97Xe3X80X81Xe3X82XafXe3X83X83Xe3X82XadXe3X83XbcXe3X81XabXe5X9bXbaXe6X9cX89Xe3X81XaeXe6X83X85Xe5Xa0Xb1Xe3X82X92Xe5X85Xa5Xe3X82X8cXe3X81Xa6Xe3X81X8aXe3X81X8fXe3X81Xa8Xe9XabX98Xe9X80X9fXe3X81XabXe5X8bX95Xe4XbdX9cXe5X87XbaXe6X9dXa5Xe3X82X8bXefXbcX88DBXe7XadX89Xe3X81X8bXe3X82X89Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X81XbfTL:FormXe3X82XafXe3X83Xa9Xe3X82Xb9Xe3X81XabXe3X82XbbXe3X83X83Xe3X83X88Xe3X81X97Xe3X81Xa6Xe3X82X82Xe5X8fXafXefXbcX89_my_$cookiedata_=_$TL->getCookie->get('TLTEST');_$cookiedata->set('<&NAME>'_=>_$name)_if(!$cookiedata->exists('name'));_$cookiedata->set('<&POINT>'_=>_$point)_if(!$cookiedata->exists('point'));"><span class="pod_lang">読み込み側例（ユーザー名等一部に固有の情報を埋め込んでいる場合）
-  #クッキーデータの取得、クッキーに固有の情報を入れておくと高速に動作出来る（DB等から読み込みTL:Formクラスにセットしても可）
+<dt><a id="item_Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X81XbfXe5X81Xb4Xe4XbeX8bXefXbcX88Xe3X83Xa6Xe3X83XbcXe3X82Xb6Xe3X83XbcXe5X90X8dXe7XadX89Xe4Xb8X80Xe9X83Xa8Xe3X81XabXe5X9bXbaXe6X9cX89Xe3X81XaeXe6X83X85Xe5Xa0Xb1Xe3X82X92Xe5X9fX8bXe3X82X81Xe8XbeXbcXe3X82X93Xe3X81Xa7Xe3X81X84Xe3X82X8bXe5Xa0Xb4Xe5X90X88XefXbcX89"><span class="pod_lang">読み込み側例（ユーザー名等一部に固有の情報を埋め込んでいる場合）
+
+</span></a></dt>
+<dd>
+<pre class="pod_verbatim"><code>  #クッキーデータの取得、クッキーに固有の情報を入れておくと高速に動作出来る（DB等から読み込みTL:Formクラスにセットしても可）
   my $cookiedata = $TL-&gt;getCookie-&gt;get('TLTEST');
   $cookiedata-&gt;set('&lt;&amp;NAME&gt;' =&gt; $name) if(!$cookiedata-&gt;exists('name'));
   $cookiedata-&gt;set('&lt;&amp;POINT&gt;' =&gt; $point) if(!$cookiedata-&gt;exists('point'));
 
-</span></a></dt>
-<dd>
-<pre class="pod_verbatim"><code>  #topはキャッシュするキー。固有情報が変更された場合、キャッシュ情報をクリアしないと永遠に情報が変わらない為、
+  #topはキャッシュするキー。固有情報が変更された場合、キャッシュ情報をクリアしないと永遠に情報が変わらない為、
   #304は通常無効にする必要がある。
   #固有の情報を置換するための情報をセットする。キーがそのまま置換される。
   #その他の条件はページ全体をキャッシュする場合と同様。
@@ -891,6 +893,26 @@ $valueがundefの場合、defaultを指定していた場合、defaultに設定�
 
 <p>
 <span class="pod_lang">ログを記録する。グループとログデータの２つを受け取る。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">ログにはヘッダが付けられ、ヘッダは「時刻(epoch値の16進数8桁表現) プロセスIDの16進数4桁表現 FastCGIのリクエスト回数の16進数4桁表現 [グループ]」の形で付けられる。
+
+</span>
+</p>
+
+</dd>
+<dt><a id="item_getLogHeader"><span class="pod_lang"><code class="pod_iseq_C">getLogHeader</code>
+
+</span></a></dt>
+<dd>
+<pre class="pod_verbatim"><code>  my $logid = $TL-&gt;getLogHeader</code></pre>
+
+<p>
+<span class="pod_lang">ログを記録するときのヘッダと同じ形式の文字列を生成する。
+「時刻(epoch値の16進数8桁表現) プロセスIDの16進数4桁表現 FastCGIのリクエスト回数の16進数4桁表現」の形の文字列が返される。
 
 </span>
 </p>
@@ -2594,6 +2616,7 @@ TL - Tripletail, Framework for Japanese Web Application
 <li><a href="#item_getDebug">getDebug</a></li>
 <li><a href="#item_getFileSentinel">getFileSentinel</a></li>
 <li><a href="#item_getInputFilter">getInputFilter</a></li>
+<li><a href="#item_getLogHeader">getLogHeader</a></li>
 <li><a href="#item_getMemorySentinel">getMemorySentinel</a></li>
 <li><a href="#item_getRawCookie">getRawCookie</a></li>
 <li><a href="#item_getSession">getSession</a></li>
@@ -2682,8 +2705,8 @@ TL - Tripletail, Framework for Japanese Web Application
 <li><a href="#item_Xe6X9bXb8Xe3X81X8dXe8XbeXbcXe3X81XbfXe5X81Xb4Xe4XbeX8bXefXbcX88Xe3X83X9aXe3X83XbcXe3X82Xb8Xe5X85Xa8Xe4XbdX93Xe3X82X92Xe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5XefXbcX89">書き込み側例（ページ全体をキャッシュ）</a></li>
 <li><a href="#item_Xe6X9bXb8Xe3X81X8dXe8XbeXbcXe3X81XbfXe5X81Xb4Xe4XbeX8bXefXbcX88Xe3X83Xa6Xe3X83XbcXe3X82Xb6Xe3X83XbcXe5X90X8dXe7XadX89Xe4Xb8X80Xe9X83Xa8Xe3X81XabXe5X9bXbaXe6X9cX89Xe3X81XaeXe6X83X85Xe5Xa0Xb1Xe3X82X92Xe5X9fX8bXe3X82X81Xe8XbeXbcXe3X82X93Xe3X81Xa7Xe3X81X84Xe3X82X8bXe5Xa0Xb4Xe5X90X88XefXbcX89">書き込み側例（ユーザー名等一部に固有の情報を埋め込んでいる場合）</a></li>
 <li><a href="#Xe7X89Xb9Xe5X8cX96Xe6X8cX87Xe5XaeX9a">特化指定</a></li>
-<li><a href="#item_Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X81XbfXe5X81Xb4Xe4XbeX8bXefXbcX88Xe3X83X9aXe3X83XbcXe3X82Xb8Xe5X85Xa8Xe4XbdX93Xe3X82X92Xe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5XefXbcX89_#topXe3X81XafXe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5Xe3X81X99Xe3X82X8bXe3X82XadXe3X83XbcXe3X80X82Xe7X94XbbXe9X9dXa2Xe6XafX8eXe3X81XabXe3X82XadXe3X83XbcXe3X82X92Xe8Xa8XadXe5XaeX9aXe3X81X99Xe3X82X8bXe3X80X82Xe3X83X9aXe3X83XbcXe3X82Xb8Xe3X83Xa3Xe3X83XbcXe3X81XaaXe3X81Xa9Xe3X82X92Xe5X88Xa9Xe7X94Xa8Xe3X81X99Xe3X82X8bXe5Xa0Xb4Xe5X90X88Xe3X80X81Xe7X94XbbXe9X9dXa2Xe6XafX8eXe3X81XabXe3X81XaaXe3X82X8bXe7X82Xb9Xe3X82X92Xe6Xb3Xa8Xe6X84X8fXe3X81X99Xe3X82X8bXefXbcX88page-1Xe7XadX89Xe3X81XabXe3X81X99Xe3X82X8bXefXbcX89_#Xe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5Xe3X81XabXe3X83X92Xe3X83X83Xe3X83X88Xe3X81X97Xe3X81X9fXe5Xa0Xb4Xe5X90X88Xe3X80X81Xe6X99X82Xe9X96X93Xe3X82X92Xe6XafX94Xe8XbcX83Xe3X81X97Xe3X81Xa6Xe3X80X81304Xe3X81Xa7Xe3X83XaaXe3X83X80Xe3X82Xa4Xe3X83XacXe3X82XafXe3X83X88Xe3X81X99Xe3X82X8bXe3X81X8bXe3X80X81Xe3X83Xa1Xe3X83Xa2Xe3X83XaaXe3X81X8bXe3X82X89Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X82X93Xe3X81Xa7Xe8Xa1Xa8Xe7Xa4XbaXe3X81X99Xe3X82X8b_#returnXe3X81X97Xe3X81X9fXe5XbeX8cXe3X81XabprintXe3X82X84flushXe3X81XaaXe3X81Xa9Xe5X87XbaXe5X8aX9bXe3X81X99Xe3X82X8bXe6X93X8dXe4XbdX9cXe3X81XafXe4Xb8X8dXe5X8fXafXe3X81XaaXe3X81X9fXe3X82X81Xe6Xb3Xa8Xe6X84X8fXe3X81X99Xe3X82X8bXe4XbaX8b_return_if(!defined($TL->printCacheUnlessModified('top')));_#Xe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5Xe3X81X99Xe3X82X8bXe3X81X93Xe3X81Xa8Xe3X82X92Xe5XaeXa3Xe8Xa8X80Xe3X81X99Xe3X82X8bXe3X80X82Xe3X81XaaXe3X81X8aXe3X80X81Xe5XaeXa3Xe8Xa8X80Xe3X81XafprintCacheUnlessModifiedXe3X82X88Xe3X82X8aXe5XbeX8cXe3X81Xa7Xe3X81X82Xe3X82X8cXe3X81Xb0Xe3X80X81Xe3X81Xa9Xe3X81XaeXe6X99X82Xe7X82Xb9Xe3X81Xa7Xe8Xa1X8cXe3X81Xa3Xe3X81Xa6Xe3X82X82Xe3X81X8bXe3X81XbeXe3X82X8fXe3X81XaaXe3X81X84_$TL->setCache('top');">読み込み側例（ページ全体をキャッシュ） #topはキャッシュするキー。画面毎にキーを設定する。ページャーなどを利用する場合、画面毎になる点を注意する（page-1等にする） #キャッシュにヒットした場合、時間を比較して、304でリダイレクトするか、メモリから読み込んで表示する #returnした後にprintやflushなど出力する操作は不可なため注意する事 return if(!defined($TL-&gt;printCacheUnlessModified('top'))); #キャッシュすることを宣言する。なお、宣言はprintCacheUnlessModifiedより後であれば、どの時点で行ってもかまわない $TL-&gt;setCache('top');</a></li>
-<li><a href="#item_Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X81XbfXe5X81Xb4Xe4XbeX8bXefXbcX88Xe3X83Xa6Xe3X83XbcXe3X82Xb6Xe3X83XbcXe5X90X8dXe7XadX89Xe4Xb8X80Xe9X83Xa8Xe3X81XabXe5X9bXbaXe6X9cX89Xe3X81XaeXe6X83X85Xe5Xa0Xb1Xe3X82X92Xe5X9fX8bXe3X82X81Xe8XbeXbcXe3X82X93Xe3X81Xa7Xe3X81X84Xe3X82X8bXe5Xa0Xb4Xe5X90X88XefXbcX89_#Xe3X82XafXe3X83X83Xe3X82XadXe3X83XbcXe3X83X87Xe3X83XbcXe3X82XbfXe3X81XaeXe5X8fX96Xe5XbeX97Xe3X80X81Xe3X82XafXe3X83X83Xe3X82XadXe3X83XbcXe3X81XabXe5X9bXbaXe6X9cX89Xe3X81XaeXe6X83X85Xe5Xa0Xb1Xe3X82X92Xe5X85Xa5Xe3X82X8cXe3X81Xa6Xe3X81X8aXe3X81X8fXe3X81Xa8Xe9XabX98Xe9X80X9fXe3X81XabXe5X8bX95Xe4XbdX9cXe5X87XbaXe6X9dXa5Xe3X82X8bXefXbcX88DBXe7XadX89Xe3X81X8bXe3X82X89Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X81XbfTL:FormXe3X82XafXe3X83Xa9Xe3X82Xb9Xe3X81XabXe3X82XbbXe3X83X83Xe3X83X88Xe3X81X97Xe3X81Xa6Xe3X82X82Xe5X8fXafXefXbcX89_my_$cookiedata_=_$TL->getCookie->get('TLTEST');_$cookiedata->set('<&NAME>'_=>_$name)_if(!$cookiedata->exists('name'));_$cookiedata->set('<&POINT>'_=>_$point)_if(!$cookiedata->exists('point'));">読み込み側例（ユーザー名等一部に固有の情報を埋め込んでいる場合） #クッキーデータの取得、クッキーに固有の情報を入れておくと高速に動作出来る（DB等から読み込みTL:Formクラスにセットしても可） my $cookiedata = $TL-&gt;getCookie-&gt;get('TLTEST'); $cookiedata-&gt;set('&lt;&amp;NAME&gt;' =&gt; $name) if(!$cookiedata-&gt;exists('name')); $cookiedata-&gt;set('&lt;&amp;POINT&gt;' =&gt; $point) if(!$cookiedata-&gt;exists('point'));</a></li>
+<li><a href="#item_Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X81XbfXe5X81Xb4Xe4XbeX8bXefXbcX88Xe3X83X9aXe3X83XbcXe3X82Xb8Xe5X85Xa8Xe4XbdX93Xe3X82X92Xe3X82XadXe3X83Xa3Xe3X83X83Xe3X82Xb7Xe3X83Xa5XefXbcX89">読み込み側例（ページ全体をキャッシュ）</a></li>
+<li><a href="#item_Xe8XaaXadXe3X81XbfXe8XbeXbcXe3X81XbfXe5X81Xb4Xe4XbeX8bXefXbcX88Xe3X83Xa6Xe3X83XbcXe3X82Xb6Xe3X83XbcXe5X90X8dXe7XadX89Xe4Xb8X80Xe9X83Xa8Xe3X81XabXe5X9bXbaXe6X9cX89Xe3X81XaeXe6X83X85Xe5Xa0Xb1Xe3X82X92Xe5X9fX8bXe3X82X81Xe8XbeXbcXe3X82X93Xe3X81Xa7Xe3X81X84Xe3X82X8bXe5Xa0Xb4Xe5X90X88XefXbcX89">読み込み側例（ユーザー名等一部に固有の情報を埋め込んでいる場合）</a></li>
 <li><a href="#Xe9X87X8fXe6X8cX87Xe5XaeX9a">量指定</a></li>
 </ul>
 </div>

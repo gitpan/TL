@@ -540,10 +540,40 @@ TL::DateTime - 日付と時刻
 
 </span></a></dt>
 <dd>
-<pre class="pod_verbatim"><code>  $bool = $dt-&gt;isHoliday;</code></pre>
+<pre class="pod_verbatim"><code>  $bool = $dt-&gt;isHoliday($type);</code></pre>
 
 <p>
-<span class="pod_lang">この日が日本の祝祭日であれば 1 を、そうでなければ undef を返す。
+<span class="pod_lang">この日が特定の日であれば 1 を、そうでなければ undef を返す。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">特定の日とは以下の通り。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">$typeが0の場合、土日及び日本の祝祭日。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">$typeが1の場合、日及び日本の祝祭日。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">$typeが2の場合、日本の祝祭日。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">デフォルトは0。
 
 </span>
 </p>
@@ -736,6 +766,63 @@ $TL-&gt;newDateTime に渡して生成したオブジェクトと比較する。
 <dd>
 <p>
 <span class="pod_lang">addMonth と同様。
+
+</span>
+</p>
+
+</dd>
+<dt><a id="item_addBusinessDay"><span class="pod_lang"><code class="pod_iseq_C">addBusinessDay</code>
+
+</span></a></dt>
+<dd>
+<pre class="pod_verbatim"><code>  $dt2 = $dt-&gt;addBusinessDay($day,$type);</code></pre>
+
+<p>
+<span class="pod_lang">$day 営業日後を表す DateTime オブジェクトを新たに生成して返す。
+お盆や年末年始などは考慮しない。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">例としては、12月31日で、$dayに1を指定した場合、翌年の1月2日が返る。
+（2日が振替休日の場合、3日が返る）
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">休業日は$typeで決定する。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">$typeが0の場合、土日及び日本の祝祭日。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">$typeが1の場合、日及び日本の祝祭日。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">$typeが2の場合、日本の祝祭日。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">を休業日として営業日を判定する。
+
+</span>
+</p>
+
+<p>
+<span class="pod_lang">デフォルトは0。
 
 </span>
 </p>
@@ -1307,6 +1394,7 @@ TL::DateTime - 日付と時刻
 <li><a href="#item_TAI64N">TAI64N</a></li>
 <li><a href="#item_X_">TL</a></li>
 <li><a href="#item_W3C_Date_and_Time">W3C Date and Time</a></li>
+<li><a href="#item_addBusinessDay">addBusinessDay</a></li>
 <li><a href="#item_addDay">addDay</a></li>
 <li><a href="#item_addHour">addHour</a></li>
 <li><a href="#item_addMinute">addMinute</a></li>

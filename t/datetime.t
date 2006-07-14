@@ -1,5 +1,5 @@
 # -*- cperl -*-
-use Test::More tests => 238;
+use Test::More tests => 258;
 use Test::Exception;
 
 use warnings;
@@ -196,6 +196,41 @@ ok($dt->getHolidayName || 1, 'getHolidayName');
 $dt->set('2000-12-23');
 ok($dt->isHoliday, '2000-12-23 is a holiday');
 is($dt->getHolidayName, '天皇誕生日', '2000-12-23 is a birthday of Emperor');
+
+$dt->set('2006-07-14');
+is($dt->isHoliday(0), undef , 'FRI isHoliday(0)');
+is($dt->isHoliday(1), undef , 'FRI isHoliday(1)');
+is($dt->isHoliday(2), undef , 'FRI isHoliday(2)');
+$dt2 = $dt->addBusinessDay(1);
+is($dt2->getDay, 18 , 'FRI addBusinessDay(1)');
+$dt2 = $dt->addBusinessDay(1,0);
+is($dt2->getDay, 18 , 'FRI addBusinessDay(1,0)');
+$dt2 = $dt->addBusinessDay(1,1);
+is($dt2->getDay, 15 , 'FRI addBusinessDay(1,0)');
+$dt2 = $dt->addBusinessDay(1,2);
+is($dt2->getDay, 15 , 'FRI addBusinessDay(1,0)');
+$dt2 = $dt->addBusinessDay(2);
+is($dt2->getDay, 18 , 'FRI addBusinessDay(1)');
+$dt2 = $dt->addBusinessDay(2,0);
+is($dt2->getDay, 18 , 'FRI addBusinessDay(1,0)');
+$dt2 = $dt->addBusinessDay(2,1);
+is($dt2->getDay, 18 , 'FRI addBusinessDay(1,0)');
+$dt2 = $dt->addBusinessDay(2,2);
+is($dt2->getDay, 16 , 'FRI addBusinessDay(1,0)');
+
+$dt->set('2006-07-15');
+is($dt->isHoliday(0), 1 , 'SAT isHoliday(0)');
+is($dt->isHoliday(1), undef , 'SAT isHoliday(1)');
+is($dt->isHoliday(2), undef , 'SAT isHoliday(2)');
+$dt->set('2006-07-16');
+is($dt->isHoliday(0), 1 , 'SUN isHoliday(0)');
+is($dt->isHoliday(1), 1 , 'SUN isHoliday(1)');
+is($dt->isHoliday(2), undef , 'SUN isHoliday(2)');
+$dt->set('2006-07-17');
+is($dt->isHoliday(0), 1 , 'SAT isHoliday(0)');
+is($dt->isHoliday(1), 1 , 'SAT isHoliday(1)');
+is($dt->isHoliday(2), 1 , 'SAT isHoliday(2)');
+
 
 #-- isLeapYear --------------------
 $dt->setYear(2004);

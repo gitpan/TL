@@ -818,6 +818,7 @@ L<ini|TL::Ini> で設定したグループ名を渡す。
 デフォルトは tl_session_グループ名 が使用される。
 
 =item csrfkey
+
   csrfkey = JLapCbI4XW7G8oEi
 
 addSessionCheck及びhaveSessionCheckで使用するキー。
