@@ -556,6 +556,7 @@ DBセットでSQLが実行される。
 
 <p>
 <span class="pod_lang">SELECT結果をハッシュの配列へのリファレンスで返す。
+データがない場合は [] が返る。
 
 </span>
 </p>
@@ -575,6 +576,7 @@ DBセットでSQLが実行される。
 
 <p>
 <span class="pod_lang">SELECT結果を配列の配列へのリファレンスで返す。
+データがない場合は [] が返る。
 
 </span>
 </p>
@@ -595,6 +597,7 @@ DBセットでSQLが実行される。
 <p>
 <span class="pod_lang">SELECT結果の最初の１行をハッシュへのリファレンスで返す。
 実行後、内部でfinishする。
+データがない場合は undef が返る。
 
 </span>
 </p>
@@ -613,6 +616,7 @@ DBセットでSQLが実行される。
 <p>
 <span class="pod_lang">SELECT結果の最初の１行を配列へのリファレンスで返す。
 実行後、内部でfinishする。
+データがない場合は undef が返る。
 
 </span>
 </p>

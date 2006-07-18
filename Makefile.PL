@@ -4,13 +4,12 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME                => 'TL',
-    AUTHOR              => 'Ymirlink <null@ymir.jp>',
+    AUTHOR              => 'Ymirlink <tl@tripletail.jp>',
     VERSION_FROM        => 'lib/TL.pm',
     ABSTRACT_FROM       => 'lib/TL.pm',
     PL_FILES            => {},
     PREREQ_PM => {
-        'Test::More'      => 0,
-	'Cache::Memcached::XS'=> 0,
+        'Test::More'          => 0,
 	'Crypt::CBC'          => 0,
 	'Crypt::Rijndael'     => 0,
 	'Data::Dumper'        => 0,

@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use UNIVERSAL qw(isa);
 
-our $VERSION = '0.10_06';
+our $VERSION = '0.10_07';
 
 our $TL = TL->__new;
 our @specialization = ();
@@ -955,7 +955,7 @@ sub sendError {
 				Subject => "$opts->{title} $locinfo",
 		)->setBody(join "\n", @lines)->toStr;
 
-		$this->newSendmail($group)->logging(0)->connect->send(
+		$this->newSendmail($group)->_setLogging(0)->connect->send(
 			from => $rcpt,
 			rcpt => $rcpt,
 			data => $mail,

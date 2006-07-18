@@ -302,15 +302,6 @@ sub execute {
 			$sth->{ret} = $sth->{sth}->execute;
 		};
 		if($@) {
-			if($this->{type} eq 'mysql'
-				 && ($dbh->{dbh}{mysql_errno} == 1205 || $dbh->{dbh}{mysql_errno} == 1213)) {
-
-				# デッドロックなのでexecuteをやり直す
-				$TL->log(__PACKAGE__, "Repeated last query automatically due to this: [$dbh->{dbh}{mysql_error}]");
-
-				next;
-			}
-
 			my $elapsed = Time::HiRes::tv_interval($begintime);
 			$TL->getDebug->_dbLog(
 				group   => $this->{group},
@@ -373,7 +364,7 @@ sub selectRowHash {
 	my $sth = $this->execute(@_);
 	
 	my $data = $sth->fetchHash();
-	$data = $data ? {%$data} : {};
+	$data = $data ? {%$data} : undef;
 	$sth->finish();
 	
 	$data;
@@ -385,7 +376,7 @@ sub selectRowArray {
 	
 	
 	my $data = $sth->fetchArray();
-	$data = $data ? [@$data] : [];
+	$data = $data ? [@$data] : undef;
 	$sth->finish();
 	
 	$data;
@@ -1266,6 +1257,7 @@ L</"setDefaultSet"> による設定がされていない場合は、エラーと
   $DB->selectAllHash(\'SET_W_Trans' => $sql, $param...)
 
 SELECT結果をハッシュの配列へのリファレンスで返す。
+データがない場合は [] が返る。
 
   my $arrayofhash = $DB->selectAllHash($sql, $param...);
   foreach my $hash (@$arrayofhash){
@@ -1278,6 +1270,7 @@ SELECT結果をハッシュの配列へのリファレンスで返す。
   $DB->selectAllArray(\'SET_W_Trans' => $sql, $param...)
 
 SELECT結果を配列の配列へのリファレンスで返す。
+データがない場合は [] が返る。
 
   my $arrayofarray = $DB->selectAllArray($sql, $param...);
   foreach my $array (@$arrayofarray){
@@ -1291,6 +1284,7 @@ SELECT結果を配列の配列へのリファレンスで返す。
 
 SELECT結果の最初の１行をハッシュへのリファレンスで返す。
 実行後、内部でfinishする。
+データがない場合は undef が返る。
 
   my $hash = $DB->selectRowHash($sql, $param...);
   $TL->log(DBDATA => "name of id $hash->{id} is $hash->{name}");
@@ -1302,6 +1296,7 @@ SELECT結果の最初の１行をハッシュへのリファレンスで返す�
 
 SELECT結果の最初の１行を配列へのリファレンスで返す。
 実行後、内部でfinishする。
+データがない場合は undef が返る。
 
   my $array = $DB->selectRowArray($sql, $param...);
   $TL->log(DBDATA => $array->[0]);

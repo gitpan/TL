@@ -593,15 +593,17 @@ sub __flush_popup {
 
 			$script .= qq~
   win = window.open("", "_tl_debug_popup_window_$popup->[1]_", "");
-  doc = win.document;
-  doc.open();
+  if (win) {
+    doc = win.document;
+    doc.open();
 ~;
 			foreach my $parts ($header_popup, $popup, $footer_popup) {
 				$script .= $parts->[2]; # 関数定義
 				$script .= "  $parts->[1](doc);\n"; # 関数呼出し
 			}
 			$script .= qq~
-  doc.close();
+    doc.close();
+  }
 ~;
 		}
 	$script .= qq~
@@ -634,15 +636,17 @@ sub __flush_popup {
 		my $script = qq~
 <script type="text/javascript"><!--
   var win = window.open("", "_tl_debug_popup_window_", "");
-  var doc = win.document;
-  doc.open();
+  if (win) {
+    var doc = win.document;
+    doc.open();
 ~;
 		foreach my $popup (@{$this->{popup}}) {
 			$script .= $popup->[2]; # 関数定義
 			$script .= "  $popup->[1](doc);\n"; # 関数呼出し
 		}
 		$script .= qq~
-  doc.close();
+    doc.close();
+  }
 // --></script>
 ~;
 

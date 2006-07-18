@@ -110,6 +110,15 @@ sub send {
 	$this;
 }
 
+sub _setLogging {
+	my $this = shift;
+	my $flag = shift;
+	
+	$this->{log} = $flag;
+	
+	$this;
+}
+
 sub _log {
 	my $this = shift;
 	my $mes = shift;

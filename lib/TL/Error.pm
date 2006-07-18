@@ -178,7 +178,7 @@ my $DEFAULT_ERROR_TEMPLATE = <<'END';
 
     <script type="text/javascript">
       var env = {
-          selected_lv : 0,
+          selected_lv : <&SELECTED_LV>,
           last_hilited: <&LAST_HILITED>
       };
 
@@ -828,7 +828,7 @@ sub message {
 
 sub _fetch_frames {
 	my $this = shift;
-	
+
 	if (not defined $PADWALKER_AVAILABLE) {
 		eval {
 			require PadWalker;
@@ -978,17 +978,33 @@ sub toHtml {
 		   );
 
 		$t->expand(
+            SELECTED_LV  => 0,
 			LAST_HILITED => 0,
 		   );
 		return $t->toStr;
 	}
+
+    # 初期状態で選択するスタックレベルは、０から順にフレームを辿って行
+    # き、最初に見付けた TL:: 名前空間外のフレームのレベルとする。但し
+    # 全てのフレームが TL:: であれば、レベル０を使用する。
+    my $default_level = 0;
+    for (my $i = 0; $i < @{$this->{frames}}; $i++) {
+		my $frame = $this->{frames}[$i];
+		my $next = ($i == @{$this->{frames}} - 1 ?
+					  undef : $this->{frames}[$i + 1]);
+        
+        if ($next and $next->func !~ m/^TL::/) {
+            $default_level = $i;
+            last;
+        }
+    }
 
 	for (my $i = 0; $i < @{$this->{frames}}; $i++) {
 		my $frame = $this->{frames}[$i];
 		my $next = ($i == @{$this->{frames}} - 1 ?
 					  undef : $this->{frames}[$i + 1]);
 
-		if ($i == 0) {
+		if ($i == $default_level) {
 			$t->node('detail')->node('frame')->node('selected')->add;
 		}
 
@@ -1009,6 +1025,9 @@ sub toHtml {
 
 		# 変数
 		while (my ($name, $value) = each %{$frame->vars}) {
+
+            $value =~ s!</script>!</sc"+"ript>!ig;
+            
 			$t->node('js-vars')->node('var')->setAttr(
 				NAME  => 'js',
 				VALUE => 'js',
@@ -1023,6 +1042,9 @@ sub toHtml {
 		   );
 
 		while (my ($name, $value) = each %{$frame->vars_shallow}) {
+
+            $value =~ s!</script>!</sc"+"ript>!ig;
+            
 			$t->node('js-vars-shallow')->node('var')->setAttr(
 				NAME  => 'js',
 				VALUE => 'js',
@@ -1072,7 +1094,7 @@ sub toHtml {
 		   );
 	}
 
-	my $frame = $this->{frames}[0];
+	my $frame = $this->{frames}[$default_level];
 
 	# デフォルトで表示される変数は Lv. 0 の変数であり、表示されるソース
 	# は Lv. 0 のソースである。これは後で JavaScript によって書き換えら
@@ -1082,6 +1104,25 @@ sub toHtml {
 			REASON => 'iniファイル、[TL]グループの "stacktrace" の設定値が'.
 			  ' "full" になっていません。');
 	}
+    elsif (not $frame) {
+        $t->node('detail')->node('vars-unavail')->setAttr(
+            REASON => 'raw',
+           );
+        $t->node('detail')->node('vars-unavail')->add(
+            REASON =>
+              q{スタックトレースを取得できませんでした。} .
+              q{$SIG{__DIE__} ハンドラが置き換えられた状態でエラーが発生した可能性があります。<br />} .
+              q{エラー内容が勝手に書き換えられるのを防ぐなどの理由で一時的に $SIG{__DIE__} } .
+              q{ハンドラを置き換える際には、次のようにして、発生したエラーを再度 die して下さい。<br /><br />} .
+              q[<pre>eval {] . "\n" .
+              q[  $SIG{__DIE__} = 'DEFAULT';] . "\n" .
+              q[  # エラーが発生する処理] . "\n" .
+              q[};] . "\n" .
+              q[if ($@) {] . "\n" .
+              q[  die $@;  # 再度エラーを発生させる] . "\n" .
+              q[}</pre>],
+           );
+    }
 	elsif (not $PADWALKER_AVAILABLE) {
 		$t->node('detail')->node('vars-unavail')->setAttr(
 			REASON => 'raw',
@@ -1104,6 +1145,12 @@ sub toHtml {
 			REASON => 'iniファイル、[TL]グループの "stacktrace" の設定値が'.
 			  ' "full" になっていません。');
 	}
+    elsif (not $frame) {
+        $t->node('detail')->node('src-unavail')->add(
+            REASON =>
+              q{スタックトレースを取得できませんでした。}
+             );
+    }
 	elsif (not defined $this->{source}{$frame->fpath}) {
 		$t->node('detail')->node('src-unavail')->add(
 			REASON => 'ソースファイル "%s" を読み込む事が出来ません。');
@@ -1123,9 +1170,18 @@ sub toHtml {
 		$t->node('detail')->node('src-avail')->add;
 	}
 
-	$t->expand(
-		LAST_HILITED => $frame->line,
-	   );
+    if ($frame) {
+        $t->expand(
+            SELECTED_LV  => $frame->level,
+            LAST_HILITED => $frame->line,
+           );
+    }
+    else {
+        $t->expand(
+            SELECTED_LV  => 0,
+            LAST_HILITED => 0,
+           );
+    }
 
 	$t->node('detail')->add;
 	$t->toStr;

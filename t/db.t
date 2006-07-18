@@ -195,7 +195,7 @@ sub main {
 		SELECT *
 		  FROM TripletaiL_DB_Test
 		 WHERE 0
-	}), {}, 'selectRowHash, no-record becomes empty hashref');
+	}), undef, 'selectRowHash, no-record becomes empty hashref');
 
 	is_deeply($DB->selectRowArray(q{
 		SELECT *
@@ -206,7 +206,7 @@ sub main {
 		SELECT *
 		  FROM TripletaiL_DB_Test
 		 WHERE 0
-	}), [], 'selectRowArray, no-record becomes empty arrayref');
+	}), undef, 'selectRowArray, no-record becomes empty arrayref');
 
 	ok($DB->lock(read => 'TripletaiL_DB_Test'), 'lock');
 	dies_ok {$DB->lock(read => 'TripletaiL_DB_Test')} 'lock die';

@@ -51,6 +51,12 @@ sub send {
 	die __PACKAGE__."#send, internal error: this method has to be overridden.\n";
 }
 
+sub _setLogging {
+	# デフォルトの実装では何もしない
+	# TL内部でのエラー処理用に、ログ保存のオプションを変更したいときに呼び出される。
+	# iniファイルのloggingよりこちらの指定を優先しなければならない。
+}
+
 sub _getoptSend {
 	my $this = shift;
 	my $pkg = ref($this);
